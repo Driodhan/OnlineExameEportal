@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Student Results - Online Exam ePortal</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fc;
+      color: #333;
+    }
+    header {
+      background: #4a90e2;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav {
+      background: #357ABD;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      font-size: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background: #285a8e;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      margin-bottom: 30px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 12px 15px;
+      text-align: center;
+    }
+    th {
+      background: #4a90e2;
+      color: white;
+    }
+    tr:nth-child(even) {
+      background: #f9f9f9;
+    }
+    tr:hover {
+      background: #eef3fc;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    caption {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+    }
+  </style>
+  <script src="navbar.js"></script>
+  <!-- <script>
+    debugger
+    const answers = JSON.parse(localStorage.getItem("quizAnswers"));
+
+    const resultDiv = document.getElementById("results");
+debugger
+    if (answers) {
+      resultDiv.innerHTML = `
+        <p><strong>1. Which sentence is correct?</strong><br> Answer: ${answers.q1}</p>
+        <p><strong>2. What is the past tense of “write”?</strong><br> Answer: ${answers.q2}</p>
+        <p><strong>3. Choose the correct article: "I saw ____ apple on the table."</strong><br> Answer: ${answers.q3}</p>
+        <p><strong>4. Which word is an adjective?</strong><br> Answer: ${answers.q4}</p>
+        <p><strong>5. What is the plural form of “mouse”?</strong><br> Answer: ${answers.q5}</p>
+      `;
+    } else {
+      resultDiv.textContent = "No answers found. Please complete the quiz first.";
+    }
+  </script> -->
+</head>
+<body>
+  <header>
+    Online Exam ePortal
+  </header>
+<div id="navbar-placeholder"></div>
+  <!-- <div id="results"></div> -->
+   <table id="resultsTable">
+    <caption>Quiz Results</caption>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Your Answer</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- JavaScript will insert rows here -->
+    </tbody>
+  </table>
+   <script>
+    window.onload = function () {
+      debugger
+      const answers = JSON.parse(localStorage.getItem("quizAnswers"));
+       const getSubject = JSON.parse(localStorage.getItem("subjects"));
+      const tbody = document.querySelector("#resultsTable tbody");
+
+      if (!answers) {
+        tbody.innerHTML = '<tr><td colspan="3">No answers found. Please complete the quiz first.</td></tr>';
+        return;
+      }
+     let  correctAnswers={};
+     let questions =[];
+
+    if(getSubject ==="English"){
+       questions = [
+        "1. Which sentence is correct?",
+        "2. What is the past tense of “write”?",
+        "3. Choose the correct article: \"I saw ____ apple on the table.\"",
+        "4. Which word is an adjective?",
+        "5. What is the plural form of “mouse”?"
+      ];
+    
+       correctAnswers = {
+        q1: "He go to school.",
+        q2: "wrote",
+        q3: "an",
+        q4: "quickly",
+        q5: "mice"
+      };
+    }else if(getSubject ==="Math"){
+       questions = [
+        "1. Solve for x: 2x + 3 = 11",
+        "2. What is the solution of x² = 16?",
+        "3. Factor: x² - 9?",
+        "4. Simplify: (2x)(3x²)?",
+        "5. What is the value of x if x² - 4x + 4 = 0?"
+      ];
+    
+      correctAnswers = {
+        q1: "x = 4",
+        q2: "x = ±4",
+        q3: "(x + 3)(x - 3)",
+        q4: "6x³",
+        q5: "x = 2"
+      };
+
+    }else if(getSubject ==="Physics"){
+        questions = [
+        "1. What is the unit of force?",
+        "2. Which of the following is a vector quantity?",
+        "3. The formula of Newton’s second law is?",
+        "4. What is the speed of light in vacuum?",
+        "5. What is the value of gravitational acceleration (g) on Earth?"
+      ];
+    
+      correctAnswers = {
+        q1: "Newton",
+        q2: "Velocity",
+        q3: "F = m × a",
+        q4: "3 × 10⁸ m/s",
+        q5: "9.8 m/s²"
+      };
+
+    }
+
+      Object.keys(answers).forEach((key, index) => {
+        const userAns = answers[key];
+        const isCorrect = userAns === correctAnswers[key];
+
+        const row = document.createElement("tr");
+        row.innerHTML = `
+          <td>${questions[index]}</td>
+          <td>${userAns}</td>
+          <td class="${isCorrect ? "correct" : "incorrect"}">${isCorrect ? "Correct" : "Incorrect"}</td>
+        `;
+        tbody.appendChild(row);
+      });
+    };
+  </script>
+
+
+  <!-- <script>
+    window.onload = function () {
+      const answers = JSON.parse(localStorage.getItem("quizAnswers"));
+      const resultDiv = document.getElementById("results");
+
+      if (answers) {
+        resultDiv.innerHTML = `
+          <p><strong>1. Which sentence is correct?</strong><br> Answer: ${answers.q1}</p>
+          <p><strong>2. What is the past tense of “write”?</strong><br> Answer: ${answers.q2}</p>
+          <p><strong>3. Choose the correct article: "I saw ____ apple on the table."</strong><br> Answer: ${answers.q3}</p>
+          <p><strong>4. Which word is an adjective?</strong><br> Answer: ${answers.q4}</p>
+          <p><strong>5. What is the plural form of “mouse”?</strong><br> Answer: ${answers.q5}</p>
+        `;
+      } else {
+        resultDiv.textContent = "No answers found. Please complete the quiz first.";
+      }
+    };
+  </script> -->
+
+  <!-- <div class="container">
+    <h1>Student Exam Results</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Exam ID</th>
+          <th>Subject</th>
+          <th>Date</th>
+          <th>Total Marks</th>
+          <th>Obtained Marks</th>
+          <th>Percentage</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>EX2025-01</td>
+          <td>Mathematics</td>
+          <td>2025-04-10</td>
+          <td>100</td>
+          <td>85</td>
+          <td>85%</td>
+          <td style="color: green;">Pass</td>
+        </tr>
+        <tr>
+          <td>EX2025-02</td>
+          <td>Physics</td>
+          <td>2025-04-15</td>
+          <td>100</td>
+          <td>64</td>
+          <td>64%</td>
+          <td style="color: green;">Pass</td>
+        </tr>
+        <tr>
+          <td>EX2025-03</td>
+          <td>English</td>
+          <td>2025-04-20</td>
+          <td>100</td>
+          <td>48</td>
+          <td>48%</td>
+          <td style="color: red;">Fail</td>
+        </tr>
+      </tbody>
+    </table>
+  </div> -->
+
+  <footer>
+    &copy; 2025 Online Exam ePortal. All rights reserved.
+  </footer>
+</body>
+</html>

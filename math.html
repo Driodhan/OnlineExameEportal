@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Algebra Exam - Online Exam ePortal</title>
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fc;
+      color: #333;
+    }
+    header {
+      background: #4a90e2;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav {
+      background: #357ABD;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background: #285a8e;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    .meta {
+      font-size: 0.95rem;
+      color: #777;
+      margin-bottom: 30px;
+    }
+    .question {
+      margin-bottom: 25px;
+      text-align: left;
+    }
+    .question p {
+      font-weight: 600;
+    }
+    .options label {
+      display: block;
+      margin: 5px 0;
+      padding-left: 10px;
+    }
+    .btn {
+      background: #4a90e2;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .btn:hover {
+      background: #357ABD;
+    }
+    footer {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+      margin-top: 40px;
+    }
+  </style>
+   <script>
+  function submitQuiz() {
+    debugger
+    try {
+     const answers = {
+      q1: document.querySelector('input[name="q1"]:checked')?.parentElement.textContent.trim(),
+      q2: document.querySelector('input[name="q2"]:checked')?.parentElement.textContent.trim(),
+      q3: document.querySelector('input[name="q3"]:checked')?.parentElement.textContent.trim(),
+      q4: document.querySelector('input[name="q4"]:checked')?.parentElement.textContent.trim(),
+      q5: document.querySelector('input[name="q5"]:checked')?.parentElement.textContent.trim(),
+    };
+
+      console.log("Saving answers:", answers);
+      if (Object.values(answers).includes(null) || Object.values(answers).includes(undefined)){
+      alert("Please answer all questions before submitting.");
+      return;
+    }
+    
+    const subject="Math";
+    localStorage.setItem("quizAnswers", JSON.stringify(answers));
+    localStorage.setItem("subjects", JSON.stringify(subject));
+
+      // Now redirect
+      window.location.href = "Results.html";
+    } catch (error) {
+      console.error("Error during quiz submission:", error);
+    }
+  }
+</script>
+
+  <script src="navbar.js"></script>
+</head>
+<body>
+  <header>Online Exam ePortal</header>
+<div id="navbar-placeholder"></div>
+
+  <div class="container">
+    <h1>Mathematics - Algebra</h1>
+    <div class="meta">Duration: 5 minutes | Total Marks: 5</div>
+
+    <form action="submit_exam.html">
+      <div class="question">
+        <p>1. Solve for x: 2x + 3 = 11</p>
+        <div class="options">
+          <label><input type="radio" name="q1"> x = 4</label>
+          <label><input type="radio" name="q1"> x = 5</label>
+          <label><input type="radio" name="q1"> x = 6</label>
+          <label><input type="radio" name="q1"> x = 3</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>2. What is the solution of x² = 16?</p>
+        <div class="options">
+          <label><input type="radio" name="q2"> x = 8</label>
+          <label><input type="radio" name="q2"> x = ±4</label>
+          <label><input type="radio" name="q2"> x = 4</label>
+          <label><input type="radio" name="q2"> x = ±8</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>3. Factor: x² - 9</p>
+        <div class="options">
+          <label><input type="radio" name="q3"> (x + 3)(x - 3)</label>
+          <label><input type="radio" name="q3"> (x + 9)(x - 1)</label>
+          <label><input type="radio" name="q3"> (x - 9)(x + 1)</label>
+          <label><input type="radio" name="q3"> (x + 4)(x - 4)</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>4. Simplify: (2x)(3x²)</p>
+        <div class="options">
+          <label><input type="radio" name="q4"> 5x²</label>
+          <label><input type="radio" name="q4"> 6x²</label>
+          <label><input type="radio" name="q4"> 6x³</label>
+          <label><input type="radio" name="q4"> 5x³</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>5. What is the value of x if x² - 4x + 4 = 0?</p>
+        <div class="options">
+          <label><input type="radio" name="q5"> x = 4</label>
+          <label><input type="radio" name="q5"> x = 2</label>
+          <label><input type="radio" name="q5"> x = 0</label>
+          <label><input type="radio" name="q5"> x = 1</label>
+        </div>
+      </div>
+
+      <button type="button" onclick="submitQuiz()" class="btn">Submit Exam</button>
+    </form>
+  </div>
+
+  <footer>
+    &copy; 2025 Online Exam ePortal. All rights reserved.
+  </footer>
+</body>
+</html>

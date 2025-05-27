@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Take Exam - Online Exam ePortal</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f4f7fc;
+      color: #333;
+    }
+    header {
+      background: #4a90e2;
+      padding: 20px;
+      color: white;
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
+    nav {
+      background: #357ABD;
+      display: flex;
+      justify-content: center;
+      padding: 10px 0;
+      font-size: 1rem;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 20px;
+      padding: 8px 12px;
+      border-radius: 4px;
+      transition: background 0.3s ease;
+    }
+    nav a:hover {
+      background: #285a8e;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.4rem;
+      margin-bottom: 10px;
+    }
+    p {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 40px;
+    }
+    .exam-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .exam-card {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.2s ease;
+    }
+    .exam-card:hover {
+      transform: translateY(-5px);
+    }
+    .exam-title {
+      font-size: 1.4rem;
+      margin-bottom: 10px;
+      color: #4a90e2;
+    }
+    .exam-desc {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+    .start-btn {
+      background: #4a90e2;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.3s ease;
+      display: inline-block;
+    }
+    .start-btn:hover {
+      background: #357ABD;
+    }
+    footer {
+      margin-top: 60px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      padding: 20px 0;
+      border-top: 1px solid #ddd;
+    }
+  </style>
+<script src="navbar.js"></script>
+
+</head>
+<body>
+  <header>
+    Online Exam ePortal
+  </header>
+<div id="navbar-placeholder"></div>
+  <!-- <nav>
+      <a href="Home.html">Home</a>
+    <a href="Exame.html">Exams</a>
+    <a href="Results.html">Results</a>
+    <a href="Contact.html">Contact</a> 
+       <a href="login.html">Login</a>
+    <a href="Signup.html">Signup</a>
+  </nav> -->
+
+  <div class="container">
+    <h1>Take Exams</h1>
+    <p>Attempt timed exams easily from anywhere with instant results.</p>
+
+    <div class="exam-list">
+      <div class="exam-card">
+        <div class="exam-title">Mathematics - Algebra</div>
+        <div class="exam-desc">Duration: 30 minutes | Total Marks: 50</div>
+        <a href="math.html" class="start-btn">Start Exam</a>
+      </div>
+      <div class="exam-card">
+        <div class="exam-title">General Science - Physics</div>
+        <div class="exam-desc">Duration: 45 minutes | Total Marks: 75</div>
+        <a href="physics.html" class="start-btn">Start Exam</a>
+      </div>
+      <div class="exam-card">
+        <div class="exam-title">English Grammar Test</div>
+        <div class="exam-desc">Duration: 25 minutes | Total Marks: 40</div>
+        <a href="english.html" class="start-btn">Start Exam</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 Online Exam ePortal. All rights reserved.
+  </footer>
+</body>
+</html>
